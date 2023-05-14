@@ -1,0 +1,33 @@
+async function a(){
+	b();
+	await c();
+	await d();
+	alertUser("a")
+}
+a();
+
+function b(){
+	return;
+	alertUser('b');
+}
+
+function c(){
+	return new Promise((resolve) => {
+      resolve();
+	    alertUser('c');
+      });
+}
+
+function d(){
+	return new Promise((resolve) => {
+	    alertUser('d');
+      });
+}
+
+function alertUser(message){
+	console.log('A função é: '+message);
+}
+
+// O retorno no console são: "a função é c" e "a função é d"
+
+//Sim, existe um erro no código. A função b() contém um comando "return" antes da chamada para a função alertUser('b'). Isso faz com que a execução da função b() termine antes da chamada para alertUser('b'), impedindo que a mensagem seja exibida no console. Para corrigir o problema, é necessário remover o comando "return" da função b().

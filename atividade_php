@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$nomes = ['Francisco Souza', 'Guilherme Rosa', 'Arthur Golveia', 'Marcelo Planalto'];//adicionado o cliente Marcelo Planalto no arraylist.
+$cliente1 = new stdClass();
+$cliente1->nome = $nomes[0];
+$cliente2 = new stdClass();
+$cliente2->nome = $nomes[1];
+$cliente3 = new stdClass();
+$cliente3->nome = $nomes[2];
+$cliente4 = new stdClass();
+$cliente4->nome = $nomes[3];
+$arrayDeClientes = [$cliente1, $cliente2, $cliente3, $cliente4];
+
+echo $arrayDeClientes[1]->nome.'<br><br>'; //Solução da primeira questão
+
+$arrayDeNascimento = [
+    'Francisco Souza' => '10-12-1996',
+    'Arthur Golveia' => '14-01-2000',
+    'Guilherme Rosa' => '26-05-1985',
+    'Marcelo Planalto' => '26-05-1985'
+];
+
+//Solução da segunda questão
+foreach ($arrayDeClientes as $cliente) {
+    $nomeCliente = $cliente->nome;
+    if (isset($arrayDeNascimento[$nomeCliente])) {
+        $cliente->dataNascimento = $arrayDeNascimento[$nomeCliente];
+    }
+}
+
+foreach ($arrayDeClientes as $cliente) {
+    echo "Nome: " . $cliente->nome . ", Data de Nascimento: " . $cliente->dataNascimento . "<br>";
+}
+
+echo '<br>';
+
+//Solução da terceira questão
+usort($arrayDeClientes, function($cliente1, $cliente2) {
+    $dataNascimento1 = strtotime($cliente1->dataNascimento);
+    $dataNascimento2 = strtotime($cliente2->dataNascimento);
+    
+    return $dataNascimento1 - $dataNascimento2;
+});
+
+
+foreach ($arrayDeClientes as $cliente) {
+    echo $cliente->nome . " nascido em " . $cliente->dataNascimento . "<br>";
+}
+?>
+
+</body>
+</html>

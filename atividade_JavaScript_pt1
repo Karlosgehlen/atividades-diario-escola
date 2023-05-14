@@ -1,0 +1,30 @@
+var clientes = [
+    {
+      'id': 1,
+      'nome': 'Luis Santos Silveira',
+      'idade': 18
+    },
+    {
+      'id': 2,
+      'nome': 'Ricardo Lopes Alves',
+      'idade': 30
+    },
+    {
+      'id': 3,
+      'nome': 'Gustavo Silva Junior',
+      'idade': 26
+    }
+];
+    
+var numero = "5(1)9-876-543-21";
+
+//Solução da questão 1
+for (var i = 0; i < clientes.length; i++) {
+    var nomeCompleto = clientes[i].nome;
+    var partesNome = nomeCompleto.split(' ');
+    var ultimoNome = partesNome.pop();
+    var primeiroNome = partesNome.join(' ');
+  
+    var nomeFormatado = ultimoNome + ', ' + primeiroNome;
+    console.log(nomeFormatado);
+}
